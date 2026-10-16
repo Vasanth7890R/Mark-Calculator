@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grade calculater</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        input {
+            width: 220px;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        button {
+            width: 220px;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" placeholder="enter a mark" id="mark1">
+    <input type="number" placeholder="enter a mark" id="mark2">
+    <input type="number" placeholder="enter a mark" id="mark3">
+    <input type="number" placeholder="enter a mark" id="mark4">
+    <input type="number" placeholder="enter a mark" id="mark5">
+    <button onclick="grade()">Calculate</button>
+    <h1 id="result">result</h1>
+    <script>
+        function grade() {
+            var mark1 = Number(document.getElementById("mark1").value);
+            var mark2 = Number(document.getElementById("mark2").value);
+            var mark3 = Number(document.getElementById("mark3").value);
+            var mark4 = Number(document.getElementById("mark4").value);
+            var mark5 = Number(document.getElementById("mark5").value);
+            console.log(typeof mark1);
+            let sum = mark1 + mark2 + mark3 + mark4 + mark5;
+            let avg = sum / 5;
+            let res = "";
+            if (avg >= 90) { res = "your grade is A"; }
+            else if (avg >= 80) { res = "your grade is B"; }
+            else if (avg >= 70) { res = "your grade is C"; }
+            else if (avg >= 60) { res = "your grade is D"; }
+            else { res = "your grade is Fail"; }
+        
+            document.getElementById("result").innerText = res;
+            alert(res);
+        }
+    </script>
+</body>
+
+</html>
